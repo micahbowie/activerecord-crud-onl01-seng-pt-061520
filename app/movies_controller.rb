@@ -29,7 +29,14 @@ def can_be_created_in_a_block(args = nil)
   # release_date == 1990
   
   Movie.create do |m|
-    __
+    if args == nil
+      m.title = "Home Alone"
+      m.release_date = 1990
+    else
+      args.each do |col_name, col_value|
+        m[col_name] = col_value
+      end
+    end
   end
 end
 
